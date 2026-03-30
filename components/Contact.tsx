@@ -21,7 +21,7 @@ export default function Contact() {
 
         <div className="space-y-3">
           {[
-            { label: "Email", value: "izzathilmi98@gmail.com", href: "mailto:izzathilmi98@gmail.com" },
+            { label: "Email", value: "izzathilmi54321@gmail.com", href: "mailto:izzathilmi54321@gmail.com" },
             { label: "LinkedIn", value: "linkedin.com/in/izzathilmi98", href: "https://www.linkedin.com/in/izzathilmi98/" },
             { label: "GitHub", value: "github.com/izzathilmi", href: "https://github.com/izzathilmi" },
           ].map(({ label, value, href }) => (
