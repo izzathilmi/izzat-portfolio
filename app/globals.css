@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --green: #76b900;
+  --green-glow: rgba(118, 185, 0, 0.15);
+  --green-dim: rgba(118, 185, 0, 0.6);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #76b900;
+  border-radius: 3px;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(118, 185, 0, 0.3);
+  color: #fff;
+}
+
+/* Scroll offset handled via scroll-mt-36 on wrapper divs */
+
+/* Glow text utility */
+.text-glow {
+  text-shadow: 0 0 20px rgba(118, 185, 0, 0.5);
+}
+
+.border-glow {
+  box-shadow: 0 0 15px rgba(118, 185, 0, 0.2);
 }
