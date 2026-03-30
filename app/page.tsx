@@ -14,15 +14,15 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#0a0a0a] flex">
+    <main className="relative min-h-screen bg-[#0a0a0a] flex flex-col lg:flex-row">
       <CursorGlow />
       <Sidebar />
 
-      {/* Spacer matching the fixed sidebar width */}
-      <div className="w-[38%] shrink-0" />
+      {/* Spacer matching the fixed sidebar width — desktop only */}
+      <div className="hidden lg:block lg:w-[38%] shrink-0" />
 
       {/* Right scrollable content */}
-      <div className="flex-1 px-14 pt-36 pb-20 space-y-32">
+      <div className="flex-1 px-8 pt-12 pb-20 space-y-24 lg:px-14 lg:pt-36 lg:space-y-32">
         <div id="about" className="scroll-mt-36">
           <SectionLabel>About</SectionLabel>
           <About />

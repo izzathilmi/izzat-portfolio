@@ -41,14 +41,14 @@ export default function Sidebar() {
   }, [displayed, deleting, roleIndex]);
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-[38%] flex flex-col justify-between pl-28 pr-14 pt-36 pb-20">
+    <aside className="relative w-full flex flex-col gap-8 px-8 pt-12 pb-8 lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-[38%] lg:flex-col lg:justify-between lg:pl-28 lg:pr-14 lg:pt-36 lg:pb-20">
       {/* Top */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <h1 className="text-5xl font-bold text-white tracking-tight mb-3">
+        <h1 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3">
           Izzat Hilmi
         </h1>
 
@@ -62,12 +62,12 @@ export default function Sidebar() {
         </p>
       </motion.div>
 
-      {/* Nav */}
+      {/* Nav — desktop only */}
       <motion.nav
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.3 }}
-        className="space-y-4"
+        className="hidden lg:flex flex-col space-y-4"
       >
         {navLinks.map(({ label, href }) => (
           <a
@@ -83,11 +83,12 @@ export default function Sidebar() {
         ))}
       </motion.nav>
 
-      {/* Resume download */}
+      {/* Resume + social — shown on both, row on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.45 }}
+        className="flex flex-row items-center gap-5 lg:flex-col lg:items-start lg:gap-6"
       >
         <a
           href="/resume.pdf"
@@ -97,27 +98,21 @@ export default function Sidebar() {
           <FileText size={13} />
           Resume
         </a>
-      </motion.div>
 
-      {/* Bottom — social */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.5 }}
-        className="flex items-center gap-5"
-      >
-        <a href="https://github.com/izzathilmi" target="_blank" rel="noopener noreferrer"
-          className="text-gray-600 hover:text-[#76b900] transition-colors duration-200">
-          <Github size={18} />
-        </a>
-        <a href="https://www.linkedin.com/in/izzathilmi98/" target="_blank" rel="noopener noreferrer"
-          className="text-gray-600 hover:text-[#76b900] transition-colors duration-200">
-          <Linkedin size={18} />
-        </a>
-        <a href="mailto:izzathilmi54321@gmail.com"
-          className="text-gray-600 hover:text-[#76b900] transition-colors duration-200">
-          <Mail size={18} />
-        </a>
+        <div className="flex items-center gap-5">
+          <a href="https://github.com/izzathilmi" target="_blank" rel="noopener noreferrer"
+            className="text-gray-600 hover:text-[#76b900] transition-colors duration-200">
+            <Github size={18} />
+          </a>
+          <a href="https://www.linkedin.com/in/izzathilmi98/" target="_blank" rel="noopener noreferrer"
+            className="text-gray-600 hover:text-[#76b900] transition-colors duration-200">
+            <Linkedin size={18} />
+          </a>
+          <a href="mailto:izzathilmi54321@gmail.com"
+            className="text-gray-600 hover:text-[#76b900] transition-colors duration-200">
+            <Mail size={18} />
+          </a>
+        </div>
       </motion.div>
     </aside>
   );
