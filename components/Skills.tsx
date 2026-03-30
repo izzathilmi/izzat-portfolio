@@ -5,19 +5,23 @@ import { motion } from "framer-motion";
 const groups = [
   {
     label: "Work & Industry",
-    items: ["Industrial Automation", "Mechanical Design Support", "Wiring & Process Flow Automation", "Technical Troubleshooting"],
+    items: ["Industrial Automation", "Mechanical Design Support", "Technical Troubleshooting", "FMEA Documentation", "Work Instructions & SOP"],
   },
   {
-    label: "Programming & Data",
-    items: ["Python", "TypeScript / JavaScript", "Data Engineering", "Jupyter / Pandas"],
+    label: "Programming",
+    items: ["Python", "TypeScript / JavaScript", "Jupyter / Pandas", "Next.js"],
   },
   {
-    label: "AI & Learning",
-    items: ["Computer Vision", "Large Language Models", "Deep Learning Fundamentals", "Machine Learning"],
+    label: "AI & Integrations",
+    items: ["Claude Code", "LLM Workflows", "Telegram Bot API", "Microsoft Teams Webhooks", "PyTorch", "OpenCV"],
+  },
+  {
+    label: "Learning",
+    items: ["Computer Vision", "Deep Learning", "Machine Learning"],
   },
   {
     label: "Tools",
-    items: ["VS Code", "Docker", "Git", "Linux", "Ollama", "PyTorch", "OpenCV", "Next.js"],
+    items: ["VS Code", "Docker", "Git", "Linux", "Obsidian"],
   },
 ];
 
