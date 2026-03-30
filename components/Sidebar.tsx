@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, FileText } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -83,6 +83,22 @@ export default function Sidebar() {
         ))}
       </motion.nav>
 
+      {/* Resume download */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.45 }}
+      >
+        <a
+          href="/resume.pdf"
+          download
+          className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-gray-500 border border-gray-700 hover:border-[#76b900] hover:text-[#76b900] transition-all duration-200 px-4 py-2"
+        >
+          <FileText size={13} />
+          Resume
+        </a>
+      </motion.div>
+
       {/* Bottom — social */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -98,7 +114,7 @@ export default function Sidebar() {
           className="text-gray-600 hover:text-[#76b900] transition-colors duration-200">
           <Linkedin size={18} />
         </a>
-        <a href="mailto:izzathilmi98@gmail.com"
+        <a href="mailto:izzathilmi54321@gmail.com"
           className="text-gray-600 hover:text-[#76b900] transition-colors duration-200">
           <Mail size={18} />
         </a>
