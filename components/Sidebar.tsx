@@ -14,9 +14,9 @@ const navLinks = [
 
 const roles = [
   "Technical Support Engineer",
-  "AI Workflow Builder",
-  "Document Controller (aspiring)",
-  "Humanoid Robotics Builder",
+  "Aspiring Manufacturing Engineer",
+  "Industrial Automation Specialist",
+  "AI-Integrated Problem Solver",
 ];
 
 export default function Sidebar() {
@@ -58,7 +58,7 @@ export default function Sidebar() {
         </div>
 
         <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
-          From Automation to Autonomy — engineering systems, learning vision, building the future.
+          Building systems that run. Processes that improve. Engineering powered by technology.
         </p>
       </motion.div>
 
