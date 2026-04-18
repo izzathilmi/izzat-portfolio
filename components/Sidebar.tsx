@@ -91,7 +91,7 @@ export default function Sidebar() {
         className="flex flex-row items-center gap-5 lg:flex-col lg:items-start lg:gap-6"
       >
         <a
-          href="/resume.pdf"
+          href="/muhammad_izzat_hilmi_resume.pdf"
           download
           className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-gray-500 border border-gray-700 hover:border-[#76b900] hover:text-[#76b900] transition-all duration-200 px-4 py-2"
         >
