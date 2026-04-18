@@ -17,21 +17,22 @@ export default function About() {
 
         <div className="space-y-5 text-gray-400 text-sm leading-loose">
           <p>
-            I&apos;m a <span className="text-white">Technical Support Engineer</span> with 4 years in
-            industrial automation based in Penang, Malaysia. Day to day, I handle equipment commissioning,
-            technical documentation, and process support — keeping machines running and properly documented.
+            I&apos;m a <span className="text-white">Technical Support Engineer</span> with 4+ years
+            at a precision custom machine builder in Penang. My work spans machine commissioning, FMEA,
+            root cause analysis, and full lifecycle technical documentation — from in-house build through
+            to onsite installation at EV and semiconductor production lines.
           </p>
           <p>
-            I also build things on the side. I self-initiated a{" "}
-            <span className="text-[#76b900]">real-time machine downtime alert system</span> at work —
-            no software background, just a problem worth solving. Now I use{" "}
-            <span className="text-[#76b900]">AI tools</span> daily to accelerate documentation workflows
-            and knowledge management.
+            I don&apos;t just maintain systems — I improve them. I self-initiated a{" "}
+            <span className="text-[#76b900]">real-time machine downtime alert system</span>, built an{" "}
+            <span className="text-[#76b900]">HMI monitoring dashboard</span> for live floor visibility, and
+            developed an{" "}
+            <span className="text-[#76b900]">AI Coworker platform</span> that lets engineers query technical
+            documents through a conversational interface — all without a software team behind me.
           </p>
           <p>
-            My bigger goal: <span className="text-[#76b900]">humanoid robotics</span>. I&apos;m learning
-            Computer Vision and building a prototype with NVIDIA Jetson Orin Nano. I believe the future
-            of intelligent machines starts with engineers who understand both the hardware and the software.
+            I believe the best engineers combine deep domain knowledge with the ability to build tools that
+            make the whole team faster. That&apos;s the kind of engineer I&apos;m becoming.
           </p>
         </div>
       </motion.div>

@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const groups = [
   {
-    label: "Work & Industry",
-    items: ["Industrial Automation", "Mechanical Design Support", "Technical Troubleshooting", "FMEA Documentation", "Work Instructions & SOP"],
+    label: "Engineering",
+    items: ["Machine Commissioning & Installation", "Root Cause Analysis", "FMEA Documentation", "Process Improvement", "Work Instructions & SOP", "Mechanical Troubleshooting"],
   },
   {
     label: "Programming",
@@ -13,11 +13,11 @@ const groups = [
   },
   {
     label: "AI & Integrations",
-    items: ["Claude Code", "LLM Workflows", "Telegram Bot API", "Microsoft Teams Webhooks", "PyTorch", "OpenCV"],
+    items: ["LLM Workflows", "RAG Systems", "Telegram Bot API", "Microsoft Teams Webhooks", "OpenCV"],
   },
   {
-    label: "Learning",
-    items: ["Computer Vision", "Deep Learning", "Machine Learning"],
+    label: "Data & Analysis",
+    items: ["Excel (Advanced)", "Pivot Tables & Dashboards", "Python / Pandas", "Log & Trend Analysis"],
   },
   {
     label: "Tools",

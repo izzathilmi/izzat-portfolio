@@ -6,8 +6,9 @@ import { Github, Linkedin, ChevronDown } from "lucide-react";
 
 const roles = [
   "Technical Support Engineer",
-  "Computer Vision Learner",
-  "Humanoid Robotics Builder",
+  "Aspiring Manufacturing Engineer",
+  "Industrial Automation Specialist",
+  "AI-Integrated Problem Solver",
 ];
 
 export default function Hero() {
@@ -80,7 +81,7 @@ export default function Hero() {
           transition={{ delay: 0.8 }}
           className="text-gray-500 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
         >
-          From Automation to Autonomy — engineering systems, learning vision, building the future.
+          Building systems that run. Processes that improve. Engineering powered by technology.
         </motion.p>
 
         <motion.div
