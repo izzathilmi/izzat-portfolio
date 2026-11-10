@@ -2,19 +2,24 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { Github, Linkedin, Mail, ShoppingBag, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Mail, ShoppingBag, LayoutGrid } from "lucide-react";
 import scene from "@/assets/buildlab.webp";
 import RainCanvas from "./RainCanvas";
-import HudStatus from "./HudStatus";
+import HudPanel from "./HudPanel";
+import Typewriter from "./Typewriter";
+import { TopBar, BottomBar } from "./FrameBars";
 
 const PARALLAX_PX = 14;
 
-const LINKS = [
+const ACTIONS = [
+  { label: "Projects", href: "#projects", Icon: LayoutGrid },
   { label: "GitHub", href: "https://github.com/izzathilmi", Icon: Github },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/izzathilmi98/", Icon: Linkedin },
   { label: "Shop", href: "https://izzatbuilds.gumroad.com", Icon: ShoppingBag },
   { label: "Email", href: "mailto:izzathilmi54321@gmail.com", Icon: Mail },
 ];
+
+const STATUS_LINES = ["Building on a Jetson tonight", "Open to automation + AI projects", "Oyen is on night shift"];
 
 /** Moves the scene a few px against the pointer (fine pointers only, not for reduced motion). */
 function useParallax(target: React.RefObject<HTMLDivElement | null>) {
@@ -40,15 +45,51 @@ function useParallax(target: React.RefObject<HTMLDivElement | null>) {
   }, [target]);
 }
 
+function NameCard() {
+  return (
+    <div className="hero-rise w-full max-w-xl rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-6 shadow-2xl shadow-black/40 backdrop-blur-xl lg:p-12">
+      <p className="font-pixel text-[11px] uppercase tracking-[0.25em] text-white/55 lg:text-xs">Automation &amp; AI Builder</p>
+      <h1 className="mt-4 font-pixel text-3xl text-[#f3e6d0] lg:mt-6 lg:text-5xl">Izzat Hilmi</h1>
+      <p className="mt-4 font-pixel text-[10px] uppercase leading-5 tracking-[0.2em] text-white/50 lg:text-[11px]">
+        Technical Support Engineer
+        <br />
+        Industrial Automation · Edge AI ·
+        <br />
+        AI Tools for Manufacturing
+      </p>
+      <p className="mt-5 text-sm text-white/80 lg:mt-7 lg:text-base">AI that runs on real machines. Oyen supervises.</p>
+      <nav className="mt-6 flex flex-wrap gap-2.5 lg:mt-8" aria-label="Links">
+        {ACTIONS.map(({ label, href, Icon }, i) => (
+          <a
+            key={label}
+            href={href}
+            aria-label={label}
+            title={label}
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel="noopener noreferrer"
+            className={`grid h-10 w-10 place-items-center rounded-full border transition lg:h-11 lg:w-11 ${
+              i === 0 ? "border-white/35 bg-white/15 text-white" : "border-white/15 text-white/65 hover:border-[#f0a43a]/60 hover:text-[#f3e6d0]"
+            }`}
+          >
+            <Icon size={16} aria-hidden />
+          </a>
+        ))}
+      </nav>
+      <p className="mt-6 font-pixel text-[11px] text-white/55 lg:mt-8 lg:text-xs">
+        &gt; <Typewriter lines={STATUS_LINES} />
+      </p>
+    </div>
+  );
+}
+
 export default function CinematicHero() {
   const sceneRef = useRef<HTMLDivElement>(null);
   useParallax(sceneRef);
 
   return (
-    <section className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-[#05070a]">
-      {/* Scene */}
-      {/* Phones: scene fills the top 70% so Oyen and the arm sit above the card */}
-      <div ref={sceneRef} className="absolute inset-x-0 top-0 h-[70%] scale-[1.04] transition-transform duration-300 ease-out lg:inset-0 lg:h-full">
+    <section id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-[#05070a]">
+      {/* Phones: scene fills the top 62% so Oyen and the arm sit above the card */}
+      <div ref={sceneRef} className="absolute inset-x-0 top-0 h-[62%] scale-[1.04] transition-transform duration-300 ease-out lg:inset-0 lg:h-full">
         <Image
           src={scene}
           alt="Late-night build lab: monitors with code and a factory dashboard, an orange robot arm, and Oyen the cat asleep on the desk while it rains outside"
@@ -58,69 +99,27 @@ export default function CinematicHero() {
           sizes="100vw"
           className="object-cover object-[70%_center] lg:object-center"
         />
-        {/* Desk lamp glow, flickers softly */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#05070a] to-transparent lg:hidden" />
         <div className="lamp-flicker pointer-events-none absolute left-[28%] top-[13%] h-[45%] w-[30%] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[radial-gradient(closest-side,rgba(255,180,90,0.35),transparent)] mix-blend-screen" />
       </div>
 
       <RainCanvas />
 
-      {/* Readability gradients */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/30 to-black/40 lg:bg-gradient-to-r lg:from-black/85 lg:via-black/35 lg:to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+      {/* Darken for readability, like a dim room */}
+      <div className="pointer-events-none absolute inset-0 bg-black/25 lg:bg-gradient-to-r lg:from-black/70 lg:via-black/30 lg:to-black/20" />
       <div className="grain pointer-events-none absolute inset-0" />
 
-      {/* Top bar */}
-      <header className="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-5 py-5 font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 lg:px-10">
-        <span>izzathilmii.my</span>
-        <span className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#76b900]" /> online
-        </span>
-      </header>
-
-      {/* Glass card */}
-      <div
-        className="hero-rise absolute inset-x-4 bottom-14 z-10 rounded-2xl border border-white/10 bg-black/35 p-6 backdrop-blur-md sm:inset-x-auto sm:left-8 sm:max-w-md lg:bottom-auto lg:left-16 lg:top-1/2 lg:-translate-y-1/2 lg:p-8"
-      >
-        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#f0a43a]">// builder · night shift</p>
-        <h1 className="font-mono text-3xl font-semibold tracking-tight text-[#f3e6d0] lg:text-4xl">Izzat Hilmi</h1>
-        <p className="mt-2 font-mono text-xs uppercase tracking-[0.2em] text-white/60">
-          Applied AI · Industrial Automation
-        </p>
-        <p className="mt-5 text-sm leading-relaxed text-white/75">
-          I build AI that runs on real machines, from factory HMIs to a Jetson on my desk. Oyen supervises.
-        </p>
-        <p className="mt-4 font-mono text-xs text-[#9fb7c4]">
-          &gt; currently building<span className="cursor-blink">_</span>
-        </p>
-        <nav className="mt-6 flex flex-wrap gap-2" aria-label="Links">
-          {LINKS.map(({ label, href, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 font-mono text-[11px] text-white/80 transition hover:border-[#f0a43a]/60 hover:text-[#f3e6d0]"
-            >
-              <Icon size={13} aria-hidden /> {label}
-            </a>
-          ))}
-        </nav>
+      {/* Window frame */}
+      <div className="absolute inset-2 z-10 flex flex-col rounded-2xl border border-white/15 lg:inset-6 lg:rounded-[28px]">
+        <TopBar />
+        <div className="relative flex flex-1 items-end p-3 pb-4 lg:items-center lg:px-12">
+          <NameCard />
+          <div className="absolute bottom-8 right-10 hidden lg:block">
+            <HudPanel />
+          </div>
+        </div>
+        <BottomBar />
       </div>
-
-      {/* HUD, desktop */}
-      <div className="absolute right-10 top-16 z-10 hidden rounded-xl border border-white/10 bg-black/30 p-4 backdrop-blur-sm lg:block">
-        <HudStatus />
-      </div>
-
-      {/* Scroll cue */}
-      <a
-        href="#about"
-        aria-label="Scroll to About"
-        className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 font-mono text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-white/70"
-      >
-        scroll <ArrowDown size={12} className="animate-bounce" />
-      </a>
     </section>
   );
 }

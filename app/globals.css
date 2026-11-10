@@ -53,6 +53,7 @@ body {
 /* ---- Cinematic hero ---- */
 @theme inline {
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-pixel: var(--font-doto), var(--font-jetbrains), monospace;
 }
 
 @keyframes lamp-flicker {
