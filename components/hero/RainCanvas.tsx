@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-const DROP_DENSITY = 0.00012; // drops per px² of canvas
-const MAX_DROPS = 260;
+const DROP_DENSITY = 0.0003; // drops per px² of canvas
+const MAX_DROPS = 450;
 
 type Drop = { x: number; y: number; len: number; speed: number; alpha: number };
 
@@ -11,9 +11,9 @@ function makeDrop(w: number, h: number, randomY: boolean): Drop {
   return {
     x: Math.random() * w,
     y: randomY ? Math.random() * h : -20,
-    len: 8 + Math.random() * 14,
-    speed: 5 + Math.random() * 7,
-    alpha: 0.08 + Math.random() * 0.22,
+    len: 16 + Math.random() * 22,
+    speed: 10 + Math.random() * 10,
+    alpha: 0.25 + Math.random() * 0.35,
   };
 }
 
@@ -45,7 +45,7 @@ export default function RainCanvas() {
     const tick = () => {
       const { clientWidth: w, clientHeight: h } = canvas;
       ctx.clearRect(0, 0, w, h);
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 1.3;
       drops = drops.map((d) => {
         ctx.strokeStyle = `rgba(170, 210, 230, ${d.alpha})`;
         ctx.beginPath();
