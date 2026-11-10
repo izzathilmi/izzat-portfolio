@@ -41,7 +41,7 @@ export default function Sidebar() {
   }, [displayed, deleting, roleIndex]);
 
   return (
-    <aside className="relative w-full flex flex-col gap-8 px-8 pt-12 pb-8 lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-[38%] lg:flex-col lg:justify-between lg:pl-28 lg:pr-14 lg:pt-36 lg:pb-20">
+    <aside className="relative w-full flex flex-col gap-8 px-8 pt-12 pb-8 lg:sticky lg:top-0 lg:self-start lg:shrink-0 lg:h-screen lg:w-[38%] lg:flex-col lg:justify-between lg:pl-28 lg:pr-14 lg:pt-36 lg:pb-20">
       {/* Top */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}

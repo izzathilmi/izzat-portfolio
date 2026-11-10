@@ -5,6 +5,8 @@ import Journey from "@/components/Journey";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
+import CinematicHero from "@/components/hero/CinematicHero";
+import BootScreen from "@/components/hero/BootScreen";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -14,12 +16,12 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 export default function Home() {
   return (
+    <>
+    <BootScreen />
+    <CinematicHero />
     <main className="relative min-h-screen bg-[#0a0a0a] flex flex-col lg:flex-row">
       <CursorGlow />
       <Sidebar />
-
-      {/* Spacer matching the fixed sidebar width — desktop only */}
-      <div className="hidden lg:block lg:w-[38%] shrink-0" />
 
       {/* Right scrollable content */}
       <div className="flex-1 px-8 pt-12 pb-20 space-y-24 lg:px-14 lg:pt-36 lg:space-y-32">
@@ -49,5 +51,6 @@ export default function Home() {
         </div>
       </div>
     </main>
+    </>
   );
 }
