@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Home, User, Briefcase, FolderGit2, Cpu, Mail, Maximize2, Minimize2 } from "lucide-react";
+import SoundToggle from "./SoundToggle";
 
 const NAV = [
   { label: "Home", href: "#top", Icon: Home },
@@ -85,9 +86,12 @@ export function BottomBar() {
   const Icon = full ? Minimize2 : Maximize2;
   return (
     <div className="flex items-center justify-between border-t border-white/10 px-4 py-3 text-white/50 lg:px-10 lg:py-5">
-      <button type="button" onClick={toggle} aria-label={full ? "Exit fullscreen" : "Fullscreen"} className="hover:text-white">
-        <Icon size={15} aria-hidden />
-      </button>
+      <div className="flex items-center gap-4">
+        <SoundToggle />
+        <button type="button" onClick={toggle} aria-label={full ? "Exit fullscreen" : "Fullscreen"} className="hover:text-white">
+          <Icon size={15} aria-hidden />
+        </button>
+      </div>
       <p className="text-[11px]">© {new Date().getFullYear()} Designed and built by Izzat Hilmi.</p>
     </div>
   );

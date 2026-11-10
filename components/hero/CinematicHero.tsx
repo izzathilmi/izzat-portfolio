@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { Github, Linkedin, Mail, ShoppingBag, LayoutGrid } from "lucide-react";
-import scene from "@/assets/buildlab.webp";
+import SceneVideo from "./SceneVideo";
 import RainCanvas from "./RainCanvas";
 import HudPanel from "./HudPanel";
 import Typewriter from "./Typewriter";
@@ -88,19 +87,12 @@ export default function CinematicHero() {
 
   return (
     <section id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-[#05070a]">
-      {/* Phones: scene fills the top 62% so Oyen and the arm sit above the card */}
+      {/* Phones: scene fills the top 62% so you, Oyen and the arm sit above the card */}
       <div ref={sceneRef} className="absolute inset-x-0 top-0 h-[62%] scale-[1.04] transition-transform duration-300 ease-out lg:inset-0 lg:h-full">
-        <Image
-          src={scene}
-          alt="Late-night build lab: monitors with code and a factory dashboard, an orange robot arm, and Oyen the cat asleep on the desk while it rains outside"
-          fill
-          priority
-          placeholder="blur"
-          sizes="100vw"
-          className="object-cover object-[70%_center] lg:object-center"
-        />
+        <SceneVideo />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#05070a] to-transparent lg:hidden" />
-        <div className="lamp-flicker pointer-events-none absolute left-[28%] top-[13%] h-[45%] w-[30%] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[radial-gradient(closest-side,rgba(255,180,90,0.35),transparent)] mix-blend-screen" />
+        {/* Lamp glow (lamp sits right of the monitor), flickers softly */}
+        <div className="lamp-flicker pointer-events-none absolute left-[86%] top-[38%] hidden h-[40%] w-[22%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(255,180,90,0.25),transparent)] mix-blend-screen lg:block" />
       </div>
 
       <RainCanvas />
@@ -114,7 +106,7 @@ export default function CinematicHero() {
         <TopBar />
         <div className="relative flex flex-1 items-end p-3 pb-4 lg:items-center lg:px-12">
           <NameCard />
-          <div className="absolute bottom-8 right-10 hidden lg:block">
+          <div className="absolute right-10 top-8 hidden lg:block">
             <HudPanel />
           </div>
         </div>
