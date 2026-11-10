@@ -3,9 +3,6 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --green: #76b900;
-  --green-glow: rgba(118, 185, 0, 0.15);
-  --green-dim: rgba(118, 185, 0, 0.6);
 }
 
 
@@ -18,7 +15,6 @@ body {
   color: var(--foreground);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  cursor: none;
 }
 
 /* Custom scrollbar */
@@ -29,26 +25,16 @@ body {
   background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #76b900;
+  background: #f0a43a;
   border-radius: 3px;
 }
 
 /* Selection color */
 ::selection {
-  background: rgba(118, 185, 0, 0.3);
+  background: rgba(240, 164, 58, 0.3);
   color: #fff;
 }
 
-/* Scroll offset handled via scroll-mt-36 on wrapper divs */
-
-/* Glow text utility */
-.text-glow {
-  text-shadow: 0 0 20px rgba(118, 185, 0, 0.5);
-}
-
-.border-glow {
-  box-shadow: 0 0 15px rgba(118, 185, 0, 0.2);
-}
 
 /* ---- Cinematic hero ---- */
 @theme inline {

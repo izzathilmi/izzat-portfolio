@@ -17,7 +17,7 @@ const ACTIONS = [
   { label: "Email", href: "mailto:izzathilmi54321@gmail.com", Icon: Mail },
 ];
 
-const STATUS_LINES = ["Building on a Jetson tonight", "Open to automation + AI projects", "Oyen is on night shift"];
+const STATUS_LINES = ["Fabrication + assembly by day", "Building on a Jetson tonight", "Oyen is on night shift"];
 
 /** Moves the scene a few px against the pointer (fine pointers only, not for reduced motion). */
 function useParallax(target: React.RefObject<HTMLDivElement | null>) {
@@ -49,9 +49,9 @@ function NameCard() {
       <p className="font-pixel text-[11px] uppercase tracking-[0.25em] text-white/55 lg:text-xs">Automation &amp; AI Builder</p>
       <h1 className="mt-4 font-pixel text-3xl text-[#f3e6d0] lg:mt-6 lg:text-5xl">Izzat Hilmi</h1>
       <p className="mt-4 font-pixel text-[10px] uppercase leading-5 tracking-[0.2em] text-white/50 lg:text-[11px]">
-        Technical Support Engineer
+        Process Engineer · Greatech
         <br />
-        Industrial Automation · Edge AI ·
+        Fabrication · Assembly · Edge AI ·
         <br />
         AI Tools for Manufacturing
       </p>

@@ -1,106 +1,91 @@
-"use client";
+import Section from "./sections/Section";
 
-import { motion } from "framer-motion";
+type Status = "current" | "active" | "past" | "planned";
 
-const timeline = [
+const timeline: { period: string; title: string; company: string; points: string[]; status: Status }[] = [
   {
-    period: "Apr 2025 — Present",
-    title: "Technical Support Engineer E2",
-    company: "Greatech Technology Berhad · Penang, Malaysia",
+    period: "Sep 2026 — Now",
+    title: "Process Engineer",
+    company: "Greatech Technology Berhad · Engineering · Penang",
     points: [
-      "Authored and maintained FMEA documentation to identify hardware risks early, reducing post-installation failures",
-      "Developed standard work instructions and assembly briefings ensuring technicians follow precise alignment protocols",
-      "Managed full lifecycle documentation from in-house assembly and I/O checking through to onsite commissioning",
+      "In charge of fabrication and assembly processes for a mass-production line, from fabricated parts to high-level assembly",
+      "Builds the process documentation, work instructions and issue tracking that keep fabrication and assembly running to spec",
+      "Uses AI to summarise, classify and draft from process data, with engineering checks on every decision",
     ],
     status: "current",
   },
   {
+    period: "Apr 2025 — Aug 2026",
+    title: "Technical Support Engineer E2",
+    company: "Greatech Technology Berhad · Penang",
+    points: [
+      "Authored and maintained FMEA documentation to identify hardware risks early, reducing post-installation failures",
+      "Developed standard work instructions and assembly briefings so technicians follow precise alignment protocols",
+      "Managed full lifecycle documentation from in-house assembly and I/O checking through to onsite commissioning",
+    ],
+    status: "past",
+  },
+  {
     period: "Jan 2022 — Apr 2025",
     title: "Technical Support Engineer E1",
-    company: "Greatech Technology Berhad · Penang, Malaysia",
+    company: "Greatech Technology Berhad · Penang",
     points: [
       "Commissioned and installed high-precision automation machinery onsite for EV production lines",
-      "Optimized machine process tools and mechanical alignments — achieved 15% reduction in cycle time",
-      "Developed standardized alignment checklists and work instructions adopted across the team",
+      "Optimised machine process tools and mechanical alignments, cutting cycle time by 15%",
+      "Developed standardised alignment checklists and work instructions adopted across the team",
     ],
     status: "past",
   },
   {
     period: "2024 — Now",
     title: "AI Tools for Manufacturing",
-    company: "Self-directed · Personal & Work",
+    company: "Self-directed · Work & personal",
     points: [
-      "Built real-time machine downtime alert system — notifies teams via Telegram and Teams, recognized by management",
-      "Developed HMI Monitor Dashboard for live floor visibility across production equipment",
-      "Building AI Coworker platform — engineers query SOPs and machine history via conversational AI",
+      "Real-time machine downtime alert system notifying teams via Telegram and Teams, recognised by management",
+      "HMI Monitor Dashboard for live floor visibility across production equipment",
+      "AI Coworker: engineers query SOPs and machine history in plain language, running on local models",
     ],
     status: "active",
   },
-  {
-    period: "Future",
-    title: "Systems & AI Integration",
-    company: "The Direction",
-    points: [
-      "Applying engineering domain depth to smarter, more connected manufacturing systems",
-      "Bridging the gap between plant floor expertise and modern AI tooling",
-    ],
-    status: "planned",
-  },
 ];
+
+const BADGE: Partial<Record<Status, string>> = { current: "current", active: "ongoing" };
 
 export default function Journey() {
   return (
-    <section id="journey">
-      <div className="space-y-14">
-        {timeline.map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="grid grid-cols-[120px_1fr] gap-8 rounded-xl p-5 -mx-5 transition-all duration-300 hover:bg-[#76b900]/10 hover:shadow-[0_0_40px_rgba(118,185,0,0.18)] hover:border hover:border-[#76b900]/20 border border-transparent group"
-          >
-            {/* Date */}
-            <div className="pt-0.5">
-              <span className={`text-xs tracking-wider font-mono ${
-                item.status === "current" ? "text-[#76b900]" :
-                item.status === "active" ? "text-[#76b900]/50" :
-                item.status === "past" ? "text-gray-500" :
-                "text-gray-700"
-              }`}>
-                {item.period}
-              </span>
-            </div>
-
-            {/* Content */}
-            <div>
-              <div className="flex items-start justify-between mb-1 flex-wrap gap-2">
-                <h3 className="text-white font-semibold text-base">{item.title}</h3>
-                {item.status === "current" && (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#76b900]/10 text-[#76b900] border border-[#76b900]/20 tracking-widest">
-                    CURRENT
-                  </span>
-                )}
-                {item.status === "planned" && (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full border border-white/10 text-gray-600 tracking-widest">
-                    PLANNED
+    <Section id="journey" index="02" label="experience" title="From commissioning to process">
+      <ol className="relative space-y-6 border-l border-white/10 pl-6 lg:pl-10">
+        {timeline.map((item) => (
+          <li key={item.title} className="relative">
+            <span
+              aria-hidden
+              className={`absolute -left-[29px] top-2 h-2.5 w-2.5 rounded-full lg:-left-[45px] ${
+                item.status === "current" ? "bg-[#76b900] shadow-[0_0_12px_#76b900]" : item.status === "active" ? "bg-[#f0a43a]" : "bg-white/25"
+              }`}
+            />
+            <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-white/20 hover:bg-white/[0.05] lg:p-7">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/45">{item.period}</p>
+                {BADGE[item.status] && (
+                  <span className="rounded-full border border-[#76b900]/30 bg-[#76b900]/10 px-2.5 py-0.5 font-pixel text-[10px] uppercase tracking-[0.2em] text-[#9fd35a]">
+                    {BADGE[item.status]}
                   </span>
                 )}
               </div>
-              <p className="text-gray-600 text-xs mb-4 tracking-wide">{item.company}</p>
-              <ul className="space-y-2">
-                {item.points.map((point, j) => (
-                  <li key={j} className="text-gray-400 text-sm leading-relaxed flex gap-3">
-                    <span className="text-[#76b900]/40 mt-1.5 shrink-0">·</span>
-                    {point}
+              <h3 className="mt-3 text-lg font-semibold text-[#f3e6d0]">{item.title}</h3>
+              <p className="mt-1 text-xs tracking-wide text-white/40">{item.company}</p>
+              <ul className="mt-4 space-y-2">
+                {item.points.map((p) => (
+                  <li key={p} className="flex gap-3 text-sm leading-relaxed text-white/65">
+                    <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-[#f0a43a]/70" />
+                    {p}
                   </li>
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </li>
         ))}
-      </div>
-    </section>
+      </ol>
+    </Section>
   );
 }

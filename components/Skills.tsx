@@ -1,52 +1,43 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Section, { Panel, Tag } from "./sections/Section";
 
 const groups = [
   {
-    label: "Engineering",
-    items: ["Machine Commissioning & Installation", "Root Cause Analysis", "FMEA Documentation", "Process Improvement", "Work Instructions & SOP", "Mechanical Troubleshooting"],
+    label: "Process engineering",
+    items: ["Fabrication processes", "Assembly / HLA", "Work instructions & SOP", "FMEA", "Root cause analysis", "Process improvement"],
   },
   {
-    label: "Programming",
-    items: ["Python", "TypeScript / JavaScript", "Jupyter / Pandas", "Next.js"],
+    label: "Machines & floor",
+    items: ["Machine commissioning", "Onsite installation", "Mechanical alignment", "Troubleshooting", "I/O checking"],
   },
   {
-    label: "AI & Integrations",
-    items: ["LLM Workflows", "RAG Systems", "Telegram Bot API", "Microsoft Teams Webhooks", "OpenCV"],
+    label: "AI & automation",
+    items: ["RAG systems", "Local LLMs", "LLM workflows", "Telegram / Teams bots", "OpenCV", "ComfyUI"],
   },
   {
-    label: "Data & Analysis",
-    items: ["Excel (Advanced)", "Pivot Tables & Dashboards", "Python / Pandas", "Log & Trend Analysis"],
+    label: "Code & data",
+    items: ["Python", "TypeScript", "Next.js", "Pandas", "Advanced Excel", "Log & trend analysis"],
   },
   {
     label: "Tools",
-    items: ["VS Code", "Docker", "Git", "Linux", "Obsidian"],
+    items: ["Git", "Docker", "Linux", "NVIDIA Jetson", "VS Code", "Obsidian"],
   },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills">
-      <div className="space-y-10">
-        {groups.map((group, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="grid grid-cols-[120px_1fr] gap-8"
-          >
-            <p className="text-xs text-gray-600 uppercase tracking-widest pt-0.5">{group.label}</p>
-            <div className="flex flex-wrap gap-x-6 gap-y-2">
-              {group.items.map((item) => (
-                <span key={item} className="text-gray-400 text-sm">{item}</span>
+    <Section id="skills" index="04" label="skills" title="Floor skills, plus a toolbox">
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {groups.map((g) => (
+          <Panel key={g.label} className="!p-6">
+            <p className="mb-4 font-pixel text-[11px] uppercase tracking-[0.25em] text-[#f0a43a]">{g.label}</p>
+            <div className="flex flex-wrap gap-2">
+              {g.items.map((i) => (
+                <Tag key={i}>{i}</Tag>
               ))}
             </div>
-          </motion.div>
+          </Panel>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

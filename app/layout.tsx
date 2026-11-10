@@ -9,10 +9,10 @@ const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrai
 const doto = localFont({ src: "../assets/fonts/doto-700-latin.woff2", weight: "700", variable: "--font-doto" });
 
 export const metadata: Metadata = {
-  title: "Izzat Hilmi | Engineer & Builder",
-  description: "Applied AI and industrial automation builder. AI that runs on real machines.",
+  title: "Izzat Hilmi | Process Engineer & Builder",
+  description: "Process Engineer in fabrication and assembly at Greatech, building AI tools that run on real machines.",
   openGraph: {
-    title: "Izzat Hilmi | Engineer & Builder",
+    title: "Izzat Hilmi | Process Engineer & Builder",
     description: "AI that runs on real machines.",
     type: "website",
   },

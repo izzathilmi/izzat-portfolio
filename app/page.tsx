@@ -1,5 +1,3 @@
-import CursorGlow from "@/components/CursorGlow";
-import Sidebar from "@/components/Sidebar";
 import About from "@/components/About";
 import Journey from "@/components/Journey";
 import Projects from "@/components/Projects";
@@ -8,49 +6,28 @@ import Contact from "@/components/Contact";
 import CinematicHero from "@/components/hero/CinematicHero";
 import BootScreen from "@/components/hero/BootScreen";
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-xs text-gray-700 uppercase tracking-[0.3em] mb-10">{children}</p>
-  );
-}
-
 export default function Home() {
   return (
     <>
-    <BootScreen />
-    <CinematicHero />
-    <main className="relative min-h-screen bg-[#0a0a0a] flex flex-col lg:flex-row">
-      <CursorGlow />
-      <Sidebar />
-
-      {/* Right scrollable content */}
-      <div className="flex-1 px-8 pt-12 pb-20 space-y-24 lg:px-14 lg:pt-36 lg:space-y-32">
-        <div id="about" className="scroll-mt-36">
-          <SectionLabel>About</SectionLabel>
+      <BootScreen />
+      <CinematicHero />
+      <main className="relative bg-[#0a0a0a]">
+        {/* Faint teal/amber wash so the sections feel like the same room as the hero */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_40%_at_85%_0%,rgba(40,90,110,0.18),transparent),radial-gradient(50%_30%_at_10%_60%,rgba(240,164,58,0.06),transparent)]"
+        />
+        <div className="relative mx-auto max-w-5xl space-y-28 px-5 py-24 lg:space-y-36 lg:px-8 lg:py-32">
           <About />
-        </div>
-
-        <div id="journey" className="scroll-mt-36">
-          <SectionLabel>Experience</SectionLabel>
           <Journey />
-        </div>
-
-        <div id="projects" className="scroll-mt-36">
-          <SectionLabel>Projects</SectionLabel>
           <Projects />
-        </div>
-
-        <div id="skills" className="scroll-mt-36">
-          <SectionLabel>Skills</SectionLabel>
           <Skills />
-        </div>
-
-        <div id="contact" className="scroll-mt-36">
-          <SectionLabel>Contact</SectionLabel>
           <Contact />
         </div>
-      </div>
-    </main>
+        <footer className="relative border-t border-white/10 py-8 text-center font-pixel text-[10px] uppercase tracking-[0.3em] text-white/30">
+          izzathilmii.my · built at night · oyen approved
+        </footer>
+      </main>
     </>
   );
 }

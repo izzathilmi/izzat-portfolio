@@ -1,97 +1,82 @@
-"use client";
+import Section, { Tag } from "./sections/Section";
 
-import { motion } from "framer-motion";
-import { Github, ArrowUpRight } from "lucide-react";
+type Status = "shipped" | "building";
 
-const projects = [
+const projects: { title: string; kind: string; description: string; tags: string[]; status: Status }[] = [
   {
     title: "Machine Downtime Alert System",
-    description: "Self-initiated real-time monitoring system that detects machine status changes and instantly notifies teams via Telegram and Microsoft Teams. Built without a software background — recognized by management and awarded for measurable impact on response time to production stoppages.",
-    tags: ["Python", "Telegram API", "Teams Webhooks", "Automation"],
-    github: null,
-    status: "completed",
+    kind: "Shop floor",
+    description:
+      "Detects machine status changes in real time and notifies the team on Telegram and Microsoft Teams. Self-initiated, recognised by management for cutting response time to production stoppages.",
+    tags: ["Python", "Telegram API", "Teams Webhooks"],
+    status: "shipped",
   },
   {
     title: "HMI Monitor Dashboard",
-    description: "Real-time web dashboard providing live visibility into machine HMI states across the production floor. Eliminates manual floor walks for status checks and enables faster intervention when equipment goes down.",
-    tags: ["Next.js", "Python", "Real-time", "Dashboard"],
-    github: null,
-    status: "completed",
+    kind: "Shop floor",
+    description:
+      "Live web view of machine HMI states across the production floor, so nobody has to walk the line to check status.",
+    tags: ["Next.js", "Python", "Real-time"],
+    status: "shipped",
   },
   {
-    title: "AI Coworker System",
-    description: "AI-powered assistant for engineering teams that enables conversational querying of technical documents, SOPs, and machine history. Submitted to Greatech Innovation Council (EXCO review, April 2026). Built on local LLMs to protect proprietary data.",
-    tags: ["Python", "Ollama", "LLM", "RAG", "Engineering Tools"],
-    github: null,
-    status: "in-progress",
+    title: "AI Coworker",
+    kind: "Edge AI",
+    description:
+      "Engineers ask questions about SOPs and machine history in plain language. Phase 1 RAG prototype runs on a Jetson with local models so proprietary data never leaves the site. Submitted to the Greatech Innovation Council.",
+    tags: ["RAG", "Local LLM", "FAISS + BM25", "Jetson"],
+    status: "building",
   },
   {
     title: "Jetson Edge AI Platform",
-    description: "Personal R&D platform built on NVIDIA Jetson Orin Nano. Running always-on AI services, automation agents, and edge inference experiments. Foundation for future intelligent systems work.",
-    tags: ["NVIDIA Jetson", "Edge AI", "Linux", "Automation"],
-    github: null,
-    status: "in-progress",
+    kind: "Lab",
+    description:
+      "Always-on NVIDIA Jetson Orin Nano at home running automation agents, bots and edge inference experiments. The bench where most of my ideas get tested first.",
+    tags: ["NVIDIA Jetson", "Linux", "Edge AI"],
+    status: "building",
+  },
+  {
+    title: "Oyen Live Wallpaper",
+    kind: "Side build",
+    description:
+      "Android live wallpaper of my cat Oyen: AI video clips generated locally with Wan 2.2, tap him for a reaction, he sleeps 11 pm to 7 am. Adapts to foldable inner screens.",
+    tags: ["Kotlin", "Wan 2.2", "ComfyUI"],
+    status: "shipped",
   },
 ];
 
-const statusLabel: Record<string, string> = {
-  completed: "Completed",
-  "in-progress": "In Progress",
-  learning: "Learning",
-  planned: "Planned",
-};
-
-const statusColor: Record<string, string> = {
-  completed: "text-[#76b900]",
-  "in-progress": "text-blue-400",
-  learning: "text-blue-400",
-  planned: "text-gray-600",
+const STATUS_STYLE: Record<Status, string> = {
+  shipped: "border-[#76b900]/30 bg-[#76b900]/10 text-[#9fd35a]",
+  building: "border-[#f0a43a]/30 bg-[#f0a43a]/10 text-[#f0a43a]",
 };
 
 export default function Projects() {
   return (
-    <section id="projects">
-      <div className="space-y-12">
-        {projects.map((project, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="group"
+    <Section id="projects" index="03" label="projects" title="Things I built after hours">
+      <div className="grid gap-5 md:grid-cols-2">
+        {projects.map((p, i) => (
+          <article
+            key={p.title}
+            className={`group flex flex-col rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.015] p-6 transition hover:-translate-y-0.5 hover:border-[#f0a43a]/35 lg:p-7 ${
+              i === projects.length - 1 && projects.length % 2 === 1 ? "md:col-span-2" : ""
+            }`}
           >
-            <div className="flex items-start justify-between mb-2 gap-4">
-              <h3 className="text-white font-semibold text-base group-hover:text-[#76b900] transition-colors duration-200">
-                {project.title}
-              </h3>
-              <div className="flex items-center gap-3 shrink-0 pt-0.5">
-                <span className={`text-xs tracking-wider ${statusColor[project.status]}`}>
-                  {statusLabel[project.status]}
-                </span>
-                {project.github ? (
-                  <a href={project.github} target="_blank" rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-[#76b900] transition-colors duration-200">
-                    <Github size={15} />
-                  </a>
-                ) : (
-                  <ArrowUpRight size={15} className="text-gray-800" />
-                )}
-              </div>
+            <div className="flex items-center justify-between gap-3">
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">{p.kind}</p>
+              <span className={`rounded-full border px-2.5 py-0.5 font-pixel text-[10px] uppercase tracking-[0.2em] ${STATUS_STYLE[p.status]}`}>
+                {p.status}
+              </span>
             </div>
-
-            <p className="text-gray-400 text-sm leading-relaxed mb-3">{project.description}</p>
-
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span key={tag} className="text-sm text-[#76b900] border border-[#76b900]/50 bg-[#76b900]/10 px-3 py-1 rounded-full font-medium">
-                  {tag}
-                </span>
+            <h3 className="mt-4 text-lg font-semibold text-[#f3e6d0] transition group-hover:text-[#f0a43a]">{p.title}</h3>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-white/60">{p.description}</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {p.tags.map((t) => (
+                <Tag key={t}>{t}</Tag>
               ))}
             </div>
-          </motion.div>
+          </article>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }
