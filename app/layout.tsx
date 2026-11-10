@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Doto } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
-const doto = Doto({ subsets: ["latin"], weight: ["700", "900"], variable: "--font-doto" });
+// Self-hosted: next/font/google's Doto download failed intermittently and broke Vercel builds (OFL font).
+const doto = localFont({ src: "../assets/fonts/doto-700-latin.woff2", weight: "700", variable: "--font-doto" });
 
 export const metadata: Metadata = {
   title: "Izzat Hilmi | Engineer & Builder",
