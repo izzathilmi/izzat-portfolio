@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import { Github, Linkedin, Mail, ShoppingBag, LayoutGrid } from "lucide-react";
 import SceneVideo from "./SceneVideo";
-import RainCanvas from "./RainCanvas";
 import HudPanel from "./HudPanel";
 import Typewriter from "./Typewriter";
 import { TopBar, BottomBar } from "./FrameBars";
@@ -95,7 +94,6 @@ export default function CinematicHero() {
         <div className="lamp-flicker pointer-events-none absolute left-[86%] top-[38%] hidden h-[40%] w-[22%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(255,180,90,0.25),transparent)] mix-blend-screen lg:block" />
       </div>
 
-      <RainCanvas />
 
       {/* Darken for readability, like a dim room */}
       <div className="pointer-events-none absolute inset-0 bg-black/25 lg:bg-gradient-to-r lg:from-black/70 lg:via-black/30 lg:to-black/20" />
