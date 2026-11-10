@@ -10,7 +10,7 @@ const timeline: { period: string; title: string; company: string; points: string
     points: [
       "In charge of fabrication and assembly processes for a mass-production line, from fabricated parts to high-level assembly",
       "Builds the process documentation, work instructions and issue tracking that keep fabrication and assembly running to spec",
-      "Uses AI to summarise, classify and draft from process data, with engineering checks on every decision",
+      "Industrial engineering: plans and edits production layouts in ZWCAD",
     ],
     status: "current",
   },
@@ -41,9 +41,8 @@ const timeline: { period: string; title: string; company: string; points: string
     title: "AI Tools for Manufacturing",
     company: "Self-directed · Work & personal",
     points: [
-      "Real-time machine downtime alert system notifying teams via Telegram and Teams, recognised by management",
-      "HMI Monitor Dashboard for live floor visibility across production equipment",
-      "AI Coworker: engineers query SOPs and machine history in plain language, running on local models",
+      "Machine downtime alert + HMI dashboard: live machine status for the floor, Telegram and Teams alerts on stoppages, recognised by management",
+      "Edge AI and automation experiments on an always-on NVIDIA Jetson at home",
     ],
     status: "active",
   },

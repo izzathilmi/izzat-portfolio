@@ -4,28 +4,12 @@ type Status = "shipped" | "building";
 
 const projects: { title: string; kind: string; description: string; tags: string[]; status: Status }[] = [
   {
-    title: "Machine Downtime Alert System",
+    title: "Machine Downtime Alert & HMI Dashboard",
     kind: "Shop floor",
     description:
-      "Detects machine status changes in real time and notifies the team on Telegram and Microsoft Teams. Self-initiated, recognised by management for cutting response time to production stoppages.",
-    tags: ["Python", "Telegram API", "Teams Webhooks"],
+      "One system: a live web view of machine HMI states across the production floor, plus instant Telegram and Microsoft Teams alerts the moment a machine stops. Self-initiated, recognised by management for cutting response time to production stoppages.",
+    tags: ["Python", "Next.js", "Telegram API", "Teams Webhooks"],
     status: "shipped",
-  },
-  {
-    title: "HMI Monitor Dashboard",
-    kind: "Shop floor",
-    description:
-      "Live web view of machine HMI states across the production floor, so nobody has to walk the line to check status.",
-    tags: ["Next.js", "Python", "Real-time"],
-    status: "shipped",
-  },
-  {
-    title: "AI Coworker",
-    kind: "Edge AI",
-    description:
-      "Engineers ask questions about SOPs and machine history in plain language. Phase 1 RAG prototype runs on a Jetson with local models so proprietary data never leaves the site. Submitted to the Greatech Innovation Council.",
-    tags: ["RAG", "Local LLM", "FAISS + BM25", "Jetson"],
-    status: "building",
   },
   {
     title: "Jetson Edge AI Platform",

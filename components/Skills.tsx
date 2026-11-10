@@ -2,8 +2,8 @@ import Section, { Panel, Tag } from "./sections/Section";
 
 const groups = [
   {
-    label: "Process engineering",
-    items: ["Fabrication processes", "Assembly / HLA", "Work instructions & SOP", "FMEA", "Root cause analysis", "Process improvement"],
+    label: "Process & industrial eng.",
+    items: ["Fabrication processes", "Assembly / HLA", "Layout planning (ZWCAD)", "Work instructions & SOP", "FMEA", "Root cause analysis", "Process improvement"],
   },
   {
     label: "Machines & floor",
@@ -11,7 +11,7 @@ const groups = [
   },
   {
     label: "AI & automation",
-    items: ["RAG systems", "Local LLMs", "LLM workflows", "Telegram / Teams bots", "OpenCV", "ComfyUI"],
+    items: ["Local LLMs", "LLM workflows", "Telegram / Teams bots", "OpenCV", "ComfyUI"],
   },
   {
     label: "Code & data",
